@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class DefaultUsersRepository: UsersRepository {
+final class DefaultUsersRepository: UsersRepository {
     
     let dataService: UsersDataProvider
     
@@ -17,7 +17,10 @@ class DefaultUsersRepository: UsersRepository {
     }
     
     func fetchUsersInfo() -> AnyPublisher<Users, Error> {
-        guard let url = Endpoint.url else { return Empty<Users, Error>().eraseToAnyPublisher() }
+        guard let url = Endpoint.url else {
+            return Future<Users, Error> { promise in
+                promise(.failure(URLError(.badURL)))}.eraseToAnyPublisher()
+        }
         return dataService.downloadData(url: url)
             .map { usersModel in
                 return usersModel.mapToDomain()

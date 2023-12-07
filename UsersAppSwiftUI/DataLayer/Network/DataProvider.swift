@@ -12,7 +12,7 @@ protocol UsersDataProvider {
     func downloadData(url: URL) -> AnyPublisher<UsersModel, Error>
 }
 
-class DefaultUsersDataProvider: UsersDataProvider {
+final class DefaultUsersDataProvider: UsersDataProvider {
     
     func downloadData(url: URL) -> AnyPublisher<UsersModel, Error> {
         URLSession.shared

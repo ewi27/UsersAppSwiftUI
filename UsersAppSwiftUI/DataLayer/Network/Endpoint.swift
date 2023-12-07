@@ -7,7 +7,6 @@
 
 import Foundation
 
-class Endpoint {
-    
+final class Endpoint {
     static let url = URL(string: "https://jsonplaceholder.typicode.com/users")
 }
