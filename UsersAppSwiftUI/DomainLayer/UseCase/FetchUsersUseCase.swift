@@ -12,7 +12,7 @@ protocol FetchUsersUseCase {
     func execute() -> AnyPublisher<Users, Error>
 }
 
-class DefaultFetchUsersUseCase: FetchUsersUseCase {
+final class DefaultFetchUsersUseCase: FetchUsersUseCase {
     
     let usersRepository: UsersRepository
     

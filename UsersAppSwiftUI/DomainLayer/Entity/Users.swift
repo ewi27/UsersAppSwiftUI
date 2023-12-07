@@ -27,4 +27,3 @@ struct Geo {
 struct Company {
     let name, catchPhrase, bs: String
 }
-
