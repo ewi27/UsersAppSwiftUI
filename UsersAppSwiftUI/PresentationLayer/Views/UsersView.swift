@@ -9,36 +9,32 @@ import SwiftUI
 
 struct UsersView: View {
     
-    struct Bla: Identifiable{
-        let id = UUID().uuidString
-        let name: String
-    }
-    
-    @State private var array: [Bla] = [Bla(name: "blah"), Bla(name: "blah")]
+    @StateObject private var vm = UsersViewModel()
+    @State var showAlert: Bool = false
     
     var body: some View {
-        
-        NavigationStack {
-            buttonView
-            List {
-                ForEach(array, id: \.id) { item in
-                    NavigationLink {
-                        Text("\(item.name)")
-                    } label: {
-                        HStack {
-                            Image(systemName: "person.fill")
-                            Text("\(item.name)")
-                        }
+        switch vm.state {
+        case .isReady:
+            listView
+        case .error:
+            Text("")
+                .alert("Oh no, error is here! 😮", isPresented: Binding(value: $vm.errorMessage), actions: {
+                    Button(role: .cancel, action: {}) {
+                        Text("Cancel")
                     }
-                    .padding()
-                }
-                .listRowBackground(
-                    LinearGradient(gradient: Gradient(colors: [Color("Color1"), Color("Color2")]), startPoint: .leading, endPoint: .trailing)
-                )
-            }
-            .padding()
-            .listStyle(.plain)
-            .navigationBarTitle("Users")
+                    Button {
+                        vm.fetchUsers()
+                    } label: {
+                        Text("Try again")
+                    }
+                }, message: {
+                    Text(vm.errorMessage ?? "This is error.")
+                })
+        case .isLoading:
+            ProgressView()
+                .tint(Color("Color1"))
+        case .none:
+            buttonView
         }
     }
 }
@@ -48,22 +44,43 @@ struct UsersView: View {
 }
 
 extension UsersView {
+    private var listView: some View {
+        NavigationStack {
+            List {
+                ForEach(vm.users, id: \.id) { item in
+                    NavigationLink {
+                        UserDetailView(model: item)
+                    } label: {
+                        HStack {
+                            Image(systemName: "person.fill")
+                            Text("\(item.name)")
+                        }
+                    }
+                    .padding(30)
+                    .modifier(GradientViewBackground())
+                }
+            }
+            .listStyle(.plain)
+            .navigationBarTitle("Users")
+        }
+    }
+    
     private var buttonView: some View {
         Button(action: {
-            
+            vm.fetchUsers()
         }, label: {
             Text("Click to download users")
                 .font(.title)
                 .fontWeight(.semibold)
-                .foregroundStyle(Color.gray)
+                .foregroundStyle(.gray)
+                .padding()
+                .minimumScaleFactor(0.3)
+                .lineLimit(1)
         })
-        .frame(height: 55)
         .frame(maxWidth: .infinity)
-        .background(
-            LinearGradient(gradient: Gradient(colors: [Color("Color1"), Color("Color2")]), startPoint: .leading, endPoint: .trailing)
-        )
+        .modifier(GradientViewBackground())
         .cornerRadius(10)
-        .padding()
+        .padding(.all)
         .shadow(radius: 15)
     }
 }
