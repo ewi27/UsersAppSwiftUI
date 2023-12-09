@@ -7,6 +7,6 @@
 
 import Foundation
 
-class UsersViewModel: ObservableObject {
+final class UsersViewModel: ObservableObject {
     
 }

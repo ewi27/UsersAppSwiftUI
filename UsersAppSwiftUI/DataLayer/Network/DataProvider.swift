@@ -1,5 +1,5 @@
 //
-//  DataService.swift
+//  DataProvider.swift
 //  UsersAppSwiftUI
 //
 //  Created by Ewelina on 25/11/2023.
@@ -12,7 +12,7 @@ protocol UsersDataProvider {
     func downloadData(url: URL) -> AnyPublisher<UsersModel, Error>
 }
 
-class DefaultUsersDataProvider: UsersDataProvider {
+final class DefaultUsersDataProvider: UsersDataProvider {
     
     func downloadData(url: URL) -> AnyPublisher<UsersModel, Error> {
         URLSession.shared

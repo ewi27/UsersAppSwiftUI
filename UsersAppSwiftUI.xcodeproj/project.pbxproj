@@ -11,6 +11,9 @@
 		C912E99F2B12118300438C16 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C912E99E2B12118300438C16 /* Assets.xcassets */; };
 		C912E9A22B12118300438C16 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C912E9A12B12118300438C16 /* Preview Assets.xcassets */; };
 		C912E9AA2B1227E400438C16 /* UsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C912E9A92B1227E400438C16 /* UsersView.swift */; };
+		C9A7AC3A2B24E728007AAA48 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A7AC392B24E728007AAA48 /* Address.swift */; };
+		C9A7AC3C2B24E742007AAA48 /* Geo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A7AC3B2B24E742007AAA48 /* Geo.swift */; };
+		C9A7AC3E2B24E757007AAA48 /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A7AC3D2B24E757007AAA48 /* Company.swift */; };
 		C9CF2FD22B125E6300901056 /* UsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CF2FD12B125E6300901056 /* UsersViewModel.swift */; };
 		C9CF2FD52B125F2100901056 /* UsersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CF2FD42B125F2100901056 /* UsersModel.swift */; };
 		C9CF2FDF2B12665600901056 /* FetchUsersUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CF2FDE2B12665600901056 /* FetchUsersUseCase.swift */; };
@@ -27,6 +30,9 @@
 		C912E99E2B12118300438C16 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C912E9A12B12118300438C16 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C912E9A92B1227E400438C16 /* UsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersView.swift; sourceTree = "<group>"; };
+		C9A7AC392B24E728007AAA48 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		C9A7AC3B2B24E742007AAA48 /* Geo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geo.swift; sourceTree = "<group>"; };
+		C9A7AC3D2B24E757007AAA48 /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
 		C9CF2FD12B125E6300901056 /* UsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewModel.swift; sourceTree = "<group>"; };
 		C9CF2FD42B125F2100901056 /* UsersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersModel.swift; sourceTree = "<group>"; };
 		C9CF2FDE2B12665600901056 /* FetchUsersUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchUsersUseCase.swift; sourceTree = "<group>"; };
@@ -141,6 +147,9 @@
 			isa = PBXGroup;
 			children = (
 				C9CF2FE02B12682A00901056 /* Users.swift */,
+				C9A7AC392B24E728007AAA48 /* Address.swift */,
+				C9A7AC3B2B24E742007AAA48 /* Geo.swift */,
+				C9A7AC3D2B24E757007AAA48 /* Company.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -164,19 +173,11 @@
 		C9CF2FDD2B12640D00901056 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				C9CF2FEA2B133AC500901056 /* DataMapping */,
+				C9CF2FD42B125F2100901056 /* UsersModel.swift */,
 				C9CF2FE82B1278DE00901056 /* DataProvider.swift */,
 				C9CF2FE62B12782200901056 /* Endpoint.swift */,
 			);
 			path = Network;
-			sourceTree = "<group>";
-		};
-		C9CF2FEA2B133AC500901056 /* DataMapping */ = {
-			isa = PBXGroup;
-			children = (
-				C9CF2FD42B125F2100901056 /* UsersModel.swift */,
-			);
-			path = DataMapping;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,7 +259,10 @@
 				C9CF2FE12B12682A00901056 /* Users.swift in Sources */,
 				C9CF2FE52B1269E200901056 /* DefaultUsersRepository.swift in Sources */,
 				C912E9AA2B1227E400438C16 /* UsersView.swift in Sources */,
+				C9A7AC3A2B24E728007AAA48 /* Address.swift in Sources */,
 				C9CF2FE92B1278DE00901056 /* DataProvider.swift in Sources */,
+				C9A7AC3E2B24E757007AAA48 /* Company.swift in Sources */,
+				C9A7AC3C2B24E742007AAA48 /* Geo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

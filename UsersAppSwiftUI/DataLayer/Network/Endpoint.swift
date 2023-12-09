@@ -8,6 +8,5 @@
 import Foundation
 
 class Endpoint {
-    
     static let url = URL(string: "https://jsonplaceholder.typicode.com/users")
 }
