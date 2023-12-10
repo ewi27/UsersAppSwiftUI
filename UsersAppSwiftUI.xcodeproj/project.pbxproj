@@ -21,7 +21,7 @@
 		C9CF2FE32B12696100901056 /* UsersRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CF2FE22B12696100901056 /* UsersRepository.swift */; };
 		C9CF2FE52B1269E200901056 /* DefaultUsersRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CF2FE42B1269E200901056 /* DefaultUsersRepository.swift */; };
 		C9CF2FE72B12782200901056 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CF2FE62B12782200901056 /* Endpoint.swift */; };
-		C9CF2FE92B1278DE00901056 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CF2FE82B1278DE00901056 /* DataProvider.swift */; };
+		C9CF2FE92B1278DE00901056 /* UsersDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9CF2FE82B1278DE00901056 /* UsersDataProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,7 +40,7 @@
 		C9CF2FE22B12696100901056 /* UsersRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersRepository.swift; sourceTree = "<group>"; };
 		C9CF2FE42B1269E200901056 /* DefaultUsersRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultUsersRepository.swift; sourceTree = "<group>"; };
 		C9CF2FE62B12782200901056 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
-		C9CF2FE82B1278DE00901056 /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
+		C9CF2FE82B1278DE00901056 /* UsersDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersDataProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,7 +182,7 @@
 			children = (
 				C9A7AC3F2B262D75007AAA48 /* GetUsers */,
 				C9CF2FD42B125F2100901056 /* UsersModel.swift */,
-				C9CF2FE82B1278DE00901056 /* DataProvider.swift */,
+				C9CF2FE82B1278DE00901056 /* UsersDataProvider.swift */,
 				C9CF2FE62B12782200901056 /* Endpoint.swift */,
 			);
 			path = Network;
@@ -268,7 +268,7 @@
 				C9CF2FE52B1269E200901056 /* DefaultUsersRepository.swift in Sources */,
 				C912E9AA2B1227E400438C16 /* UsersView.swift in Sources */,
 				C9A7AC3A2B24E728007AAA48 /* Address.swift in Sources */,
-				C9CF2FE92B1278DE00901056 /* DataProvider.swift in Sources */,
+				C9CF2FE92B1278DE00901056 /* UsersDataProvider.swift in Sources */,
 				C9A7AC3E2B24E757007AAA48 /* Company.swift in Sources */,
 				C9A7AC3C2B24E742007AAA48 /* Geo.swift in Sources */,
 			);
