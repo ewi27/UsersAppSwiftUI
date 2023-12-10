@@ -107,6 +107,13 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		C9A7AC3F2B262D75007AAA48 /* GetUsers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = GetUsers;
+			sourceTree = "<group>";
+		};
 		C9CF2FD32B125EC900901056 /* DataLayer */ = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +180,7 @@
 		C9CF2FDD2B12640D00901056 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				C9A7AC3F2B262D75007AAA48 /* GetUsers */,
 				C9CF2FD42B125F2100901056 /* UsersModel.swift */,
 				C9CF2FE82B1278DE00901056 /* DataProvider.swift */,
 				C9CF2FE62B12782200901056 /* Endpoint.swift */,
