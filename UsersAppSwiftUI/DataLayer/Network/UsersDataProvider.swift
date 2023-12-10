@@ -1,5 +1,5 @@
 //
-//  DataService.swift
+//  UsersDataProvider.swift
 //  UsersAppSwiftUI
 //
 //  Created by Ewelina on 25/11/2023.
