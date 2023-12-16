@@ -17,19 +17,7 @@ struct UsersView: View {
         case .isReady:
             listView
         case .error:
-            Text("")
-                .alert("Oh no, error is here! 😮", isPresented: Binding(value: $vm.errorMessage), actions: {
-                    Button(role: .cancel, action: {}) {
-                        Text("Cancel")
-                    }
-                    Button {
-                        vm.fetchUsers()
-                    } label: {
-                        Text("Try again")
-                    }
-                }, message: {
-                    Text(vm.errorMessage ?? "This is error.")
-                })
+            errorView
         case .isLoading:
             ProgressView()
                 .tint(Color("Color1"))
@@ -63,6 +51,22 @@ extension UsersView {
             .listStyle(.plain)
             .navigationBarTitle("Users")
         }
+    }
+    
+    private var errorView: some View {
+        Text("")
+            .alert("Oh no, error is here! 😮", isPresented: Binding(value: $vm.errorMessage), actions: {
+                Button(role: .cancel, action: {}) {
+                    Text("Cancel")
+                }
+                Button {
+                    vm.fetchUsers()
+                } label: {
+                    Text("Try again")
+                }
+            }, message: {
+                Text(vm.errorMessage ?? "This is error.")
+            })
     }
     
     private var buttonView: some View {
