@@ -1,5 +1,5 @@
 //
-//  UserDetailView.swift
+//  UsersModel.swift
 //  UsersAppSwiftUI
 //
 //  Created by Ewelina on 26/11/2023.
@@ -9,10 +9,10 @@ import SwiftUI
 
 struct UserDetailView: View {
     
-    let model: User
+    private let model: User
     
-    @State var showAddressView = false
-    @State var showCompanyView = false
+    @State private var showAddressView = false
+    @State private var showCompanyView = false
     
     init(model: User) {
         self.model = model

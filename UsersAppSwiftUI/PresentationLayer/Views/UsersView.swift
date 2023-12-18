@@ -14,8 +14,8 @@ struct UsersView: View {
     
     var body: some View {
         switch vm.state {
-        case .isReady:
-            listView
+        case .isReady(let users):
+            makeListView(users: users)
         case .error:
             errorView
         case .isLoading:
@@ -32,16 +32,17 @@ struct UsersView: View {
 }
 
 extension UsersView {
-    private var listView: some View {
+    
+    func makeListView(users: Users) -> some View {
         NavigationStack {
             List {
-                ForEach(vm.users, id: \.id) { item in
+                ForEach(users, id: \.id) { user in
                     NavigationLink {
-                        UserDetailView(model: item)
+                        UserDetailView(model: user)
                     } label: {
                         HStack {
                             Image(systemName: "person.fill")
-                            Text("\(item.name)")
+                            Text("\(user.name)")
                         }
                     }
                     .padding(30)

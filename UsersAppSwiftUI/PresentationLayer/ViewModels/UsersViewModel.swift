@@ -9,19 +9,17 @@ import Foundation
 import Combine
 
 enum ViewState {
-    case isReady
+    case isReady(Users)
     case error
     case isLoading
 }
 
 final class UsersViewModel: ObservableObject {
     
-    @Published var users: Users = []
-    @Published var state: ViewState?
-    
-    let useCase = DefaultFetchUsersUseCase()
+    @Published private(set) var state: ViewState?
+    private let useCase = DefaultFetchUsersUseCase()
+    private var cancellables = Set<AnyCancellable>()
     var errorMessage: String? = nil
-    var cancellables = Set<AnyCancellable>()
     
     func fetchUsers() {
         state = .isLoading
@@ -36,8 +34,7 @@ final class UsersViewModel: ObservableObject {
                     self?.state = .error
                 }
             } receiveValue: { [weak self] users in
-                    self?.state = .isReady
-                    self?.users = users
+                self?.state = .isReady(users)
             }
             .store(in: &cancellables)
     }

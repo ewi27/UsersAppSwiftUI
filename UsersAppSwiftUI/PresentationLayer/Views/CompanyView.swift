@@ -11,7 +11,11 @@ struct CompanyView: View {
     
     @Environment(\.dismiss) var dismiss
     
-    let company: Company
+    private let company: Company
+    
+    init(company: Company) {
+        self.company = company
+    }
     
     var body: some View {
         VStack(alignment: .leading, spacing: 10.0) {

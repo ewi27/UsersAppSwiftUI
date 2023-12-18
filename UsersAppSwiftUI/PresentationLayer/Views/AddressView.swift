@@ -11,7 +11,11 @@ struct AddressView: View {
     
     @Environment(\.dismiss) var dismiss
     
-    let address: Address
+    private let address: Address
+    
+    init(address: Address) {
+        self.address = address
+    }
     
     var body: some View {
         VStack(alignment: .leading, spacing: 20.0) {

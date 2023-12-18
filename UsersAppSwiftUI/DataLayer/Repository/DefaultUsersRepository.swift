@@ -16,7 +16,7 @@ final class DefaultUsersRepository: UsersRepository {
     }
     
     func fetchUsersInfo() -> AnyPublisher<Users, Error> {
-        guard let url = Endpoint.url else { return Empty<Users, Error>().eraseToAnyPublisher() }
+        guard let url = UsersEndpoint.url else { return Empty<Users, Error>().eraseToAnyPublisher() }
         return dataProvider.downloadData(url: url)
 //            .map { usersModel in
 //                usersModel.map { userModelElement in
