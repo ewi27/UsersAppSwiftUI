@@ -13,4 +13,3 @@ struct UserModelElement: Codable {
     let address: AddressModel
     let company: CompanyModel
 }
-
