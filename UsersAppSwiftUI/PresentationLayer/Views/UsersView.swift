@@ -9,36 +9,20 @@ import SwiftUI
 
 struct UsersView: View {
     
-    struct Bla: Identifiable{
-        let id = UUID().uuidString
-        let name: String
-    }
-    
-    @State private var array: [Bla] = [Bla(name: "blah"), Bla(name: "blah")]
+    @StateObject private var vm = UsersViewModel()
+    @State var showAlert: Bool = false
     
     var body: some View {
-        
-        NavigationStack {
+        switch vm.state {
+        case .isReady(let users):
+            makeListView(users: users)
+        case .error:
+            errorView
+        case .isLoading:
+            ProgressView()
+                .tint(Color("Color1"))
+        case .none:
             buttonView
-            List {
-                ForEach(array, id: \.id) { item in
-                    NavigationLink {
-                        Text("\(item.name)")
-                    } label: {
-                        HStack {
-                            Image(systemName: "person.fill")
-                            Text("\(item.name)")
-                        }
-                    }
-                    .padding()
-                }
-                .listRowBackground(
-                    LinearGradient(gradient: Gradient(colors: [Color("Color1"), Color("Color2")]), startPoint: .leading, endPoint: .trailing)
-                )
-            }
-            .padding()
-            .listStyle(.plain)
-            .navigationBarTitle("Users")
         }
     }
 }
@@ -48,22 +32,60 @@ struct UsersView: View {
 }
 
 extension UsersView {
+    
+    func makeListView(users: Users) -> some View {
+        NavigationStack {
+            List {
+                ForEach(users, id: \.id) { user in
+                    NavigationLink {
+                        UserDetailView(model: user)
+                    } label: {
+                        HStack {
+                            Image(systemName: "person.fill")
+                            Text("\(user.name)")
+                        }
+                    }
+                    .padding(30)
+                    .modifier(GradientViewBackground())
+                }
+            }
+            .listStyle(.plain)
+            .navigationBarTitle("Users")
+        }
+    }
+    
+    private var errorView: some View {
+        Text("")
+            .alert("Oh no, error is here! 😮", isPresented: Binding(value: $vm.errorMessage), actions: {
+                Button(role: .cancel, action: {}) {
+                    Text("Cancel")
+                }
+                Button {
+                    vm.fetchUsers()
+                } label: {
+                    Text("Try again")
+                }
+            }, message: {
+                Text(vm.errorMessage ?? "This is error.")
+            })
+    }
+    
     private var buttonView: some View {
         Button(action: {
-            
+            vm.fetchUsers()
         }, label: {
             Text("Click to download users")
                 .font(.title)
                 .fontWeight(.semibold)
-                .foregroundStyle(Color.gray)
+                .foregroundStyle(.gray)
+                .padding()
+                .minimumScaleFactor(0.3)
+                .lineLimit(1)
         })
-        .frame(height: 55)
         .frame(maxWidth: .infinity)
-        .background(
-            LinearGradient(gradient: Gradient(colors: [Color("Color1"), Color("Color2")]), startPoint: .leading, endPoint: .trailing)
-        )
+        .modifier(GradientViewBackground())
         .cornerRadius(10)
-        .padding()
+        .padding(.all)
         .shadow(radius: 15)
     }
 }

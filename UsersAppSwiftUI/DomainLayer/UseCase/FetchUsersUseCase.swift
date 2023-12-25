@@ -20,6 +20,6 @@ final class DefaultFetchUsersUseCase: FetchUsersUseCase {
     }
     
     func execute() -> AnyPublisher<Users, Error> {
-        return usersRepository.fetchUsersInfo()
+        usersRepository.fetchUsersInfo()
     }
 }
