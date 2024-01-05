@@ -9,15 +9,15 @@ import Combine
 
 final class DefaultUsersRepository: UsersRepository {
     
-    private let dataProvider: UsersDataProvider
+    private let dataService: DataService
     
-    init(dataProvider: UsersDataProvider = DefaultUsersDataProvider()) {
-        self.dataProvider = dataProvider
+    init(dataService: DataService = UsersDataService()) {
+        self.dataService = dataService
     }
     
     func fetchUsersInfo() -> AnyPublisher<Users, Error> {
         guard let url = UsersEndpoint.url else { return Empty<Users, Error>().eraseToAnyPublisher() }
-        return dataProvider.downloadData(url: url)
+        return dataService.request(url: url)
 //            .map { usersModel in
 //                usersModel.map { userModelElement in
 //                    return User(userModel: userModelElement)

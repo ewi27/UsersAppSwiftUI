@@ -8,15 +8,21 @@
 import Foundation
 import Combine
 
-protocol UsersDataProvider {
-    func downloadData(url: URL) -> AnyPublisher<UsersModel, Error>
+protocol DataProvider {
+    func downloadData(url: URL) -> AnyPublisher<Data, Error>
 }
 
-final class DefaultUsersDataProvider: UsersDataProvider {
+final class DefaultDataProvider: DataProvider {
     
-    func downloadData(url: URL) -> AnyPublisher<UsersModel, Error> {
-        URLSession.shared
-            .dataTaskPublisher(for: url)
+    let urlSession: URLSessionManagerProtocol
+    
+    init(urlSession: URLSessionManagerProtocol = URLSession.shared) {
+        self.urlSession = urlSession
+    }
+    
+    func downloadData(url: URL) -> AnyPublisher<Data, Error> {
+        urlSession
+            .returnPublisher(for: url)
             .subscribe(on: DispatchQueue.global(qos: .background))
             .tryMap { (data, response) -> Data in
                 guard let response = response as? HTTPURLResponse,
@@ -25,8 +31,6 @@ final class DefaultUsersDataProvider: UsersDataProvider {
                 }
                 return data
             }
-            .decode(type: UsersModel.self, decoder: JSONDecoder())
-            .mapError { $0 as Error }
             .eraseToAnyPublisher()
     }
 }
