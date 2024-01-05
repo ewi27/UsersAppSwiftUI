@@ -14,12 +14,31 @@ enum ViewState {
     case isLoading
 }
 
+extension ViewState: Equatable {
+    static func == (lhs: ViewState, rhs: ViewState) -> Bool {
+        switch (lhs, rhs) {
+        case (.isReady(_), .isReady(_)):
+            return true
+        case (.error, .error):
+            return true
+        case (.isLoading, .isLoading):
+            return true
+        default:
+            return false
+        }
+    }
+}
+
 final class UsersViewModel: ObservableObject {
     
     @Published private(set) var state: ViewState?
-    private let useCase = DefaultFetchUsersUseCase()
+    private let useCase: FetchUsersUseCase
     private var cancellables = Set<AnyCancellable>()
     var errorMessage: String? = nil
+    
+    init(useCase: FetchUsersUseCase = DefaultFetchUsersUseCase()) {
+        self.useCase = useCase
+    }
     
     func fetchUsers() {
         state = .isLoading
