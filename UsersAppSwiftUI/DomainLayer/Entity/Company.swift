@@ -14,3 +14,11 @@ extension Company {
         self.init(name: comapanyModel.name, catchPhrase: comapanyModel.catchPhrase, bs: comapanyModel.bs)
     }
 }
+
+extension Company: Equatable {
+    static func == (lhs: Company, rhs: Company) -> Bool {
+        return lhs.name == rhs.name &&
+        lhs.catchPhrase == rhs.catchPhrase &&
+        lhs.bs == rhs.bs
+    }
+}

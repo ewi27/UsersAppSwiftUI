@@ -14,3 +14,10 @@ extension Geo {
         self.init(lat: geoModel.lat, lng: geoModel.lng)
     }
 }
+
+extension Geo: Equatable {
+    static func == (lhs: Geo, rhs: Geo) -> Bool {
+        return lhs.lat == rhs.lat &&
+        lhs.lng == rhs.lng
+    }
+}
