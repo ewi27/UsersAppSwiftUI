@@ -22,7 +22,7 @@ struct UsersView: View {
             ProgressView()
                 .tint(Color("Color1"))
         case .none:
-            buttonView
+            fetchUsersButtonView
         }
     }
 }
@@ -49,6 +49,7 @@ extension UsersView {
                     .modifier(GradientViewBackground())
                 }
             }
+            .padding(5)
             .listStyle(.plain)
             .navigationBarTitle("Users")
         }
@@ -70,7 +71,7 @@ extension UsersView {
             })
     }
     
-    private var buttonView: some View {
+    private var fetchUsersButtonView: some View {
         Button(action: {
             vm.fetchUsers()
         }, label: {
