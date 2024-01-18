@@ -33,7 +33,6 @@ final class UsersViewModel: ObservableObject {
     
     @Published private(set) var state: ViewState?
     private let useCase: FetchUsersUseCase
-    private var cancellables = Set<AnyCancellable>()
     var errorMessage: String? = nil
     
     init(useCase: FetchUsersUseCase = DefaultFetchUsersUseCase()) {
@@ -44,17 +43,12 @@ final class UsersViewModel: ObservableObject {
         state = .isLoading
         useCase.execute()
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] completion in
-                switch completion {
-                case .finished:
-                    break
-                case .failure(let error):
-                    self?.errorMessage = error.localizedDescription
-                    self?.state = .error
-                }
-            } receiveValue: { [weak self] users in
-                self?.state = .isReady(users)
+            .map { ViewState.isReady($0) }
+            .catch { error -> AnyPublisher<ViewState?, Never> in
+                self.errorMessage = error.localizedDescription
+                return Just(.error).eraseToAnyPublisher()
             }
-            .store(in: &cancellables)
+            .replaceError(with: .error)
+            .assign(to: &$state)
     }
 }

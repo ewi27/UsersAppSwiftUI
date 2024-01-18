@@ -13,13 +13,7 @@ final class UsersViewModelTests: XCTestCase {
     
     var sut: UsersViewModel!
     var fetchUsersUseCase: FetchUsersUseCaseSpy!
-    
     var cancellables = Set<AnyCancellable>()
-    
-    enum TestError: Error {
-        case myError
-    }
-    
     let testUsers: Users = [User(id: 1, name: "", username: "", email: "", phone: "", website: "", address: Address(street: "", suite: "", city: "", zipcode: "", geo: nil), company: Company(name: "", catchPhrase: "", bs: ""))]
     
     override func setUpWithError() throws {
@@ -79,5 +73,11 @@ final class UsersViewModelTests: XCTestCase {
         wait(for: [expectation], timeout: 5)
         XCTAssertEqual(fetchUsersUseCase.executeCallsCount, 1)
         XCTAssertEqual(returnedState, expectedState)
+    }
+}
+
+extension UsersViewModelTests {
+    enum TestError: Error {
+        case myError
     }
 }
