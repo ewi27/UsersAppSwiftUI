@@ -10,7 +10,7 @@ import SwiftUI
 struct UsersView: View {
     
     @StateObject private var vm = UsersViewModel()
-    @State var showAlert: Bool = false
+    @State private var showAlert: Bool = false
     
     var body: some View {
         switch vm.state {
