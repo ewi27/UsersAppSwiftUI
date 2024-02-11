@@ -10,7 +10,6 @@ import SwiftUI
 struct UsersView: View {
     
     @StateObject private var vm = UsersViewModel()
-    @State private var showAlert: Bool = false
     
     var body: some View {
         switch vm.state {
@@ -56,7 +55,7 @@ extension UsersView {
     }
     
     private var errorView: some View {
-        Text("")
+        fetchUsersButtonView
             .alert("Oh no, error is here! 😮", isPresented: Binding(value: $vm.errorMessage), actions: {
                 Button(role: .cancel, action: {}) {
                     Text("Cancel")
