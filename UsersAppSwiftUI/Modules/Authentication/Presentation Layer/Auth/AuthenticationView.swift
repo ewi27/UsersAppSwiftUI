@@ -1,5 +1,5 @@
 //
-//  AuthorizationView.swift
+//  AuthenticationView.swift
 //  UsersAppSwiftUI
 //
 //  Created by Ewelina on 22/02/2024.
@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct AuthorizationView: View {
+struct AuthenticationView: View {
     
-    @ObservedObject private var viewModel: AuthorizationViewModel
+    @ObservedObject private var viewModel: AuthenticationViewModel
     var setLoggedState: (() -> Void)?
     
-    init(state: AuthorizationViewModel.State, setLoggedState: (() -> Void)?) {
+    init(state: AuthenticationViewModel.State, setLoggedState: (() -> Void)?) {
         self.viewModel = .init(state: state)
         self.setLoggedState = setLoggedState
     }
@@ -37,6 +37,6 @@ struct AuthorizationView: View {
 
 #Preview {
     NavigationStack {
-        AuthorizationView(state: .registerScreen, setLoggedState: {})
+        AuthenticationView(state: .registerScreen, setLoggedState: {})
     }
 }
