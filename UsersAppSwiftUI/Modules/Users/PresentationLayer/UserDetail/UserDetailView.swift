@@ -9,10 +9,9 @@ import SwiftUI
 
 struct UserDetailView: View {
     
-    private let model: User
-    
     @State private var showAddressView = false
     @State private var showCompanyView = false
+    private let model: User
     
     init(model: User) {
         self.model = model
@@ -48,7 +47,7 @@ struct UserDetailView: View {
 }
 
 #Preview {
-    UserDetailView(model: User(id: 1, name: "Ross", username: "t-rex", email: "email@.com", phone: "12345678910111213141516112131415167777", website: "dino.com", address: Address(street: "street", suite: "suite", city: "nyc", zipcode: "zipcode", geo: nil), company: Company(name: "Big Dino", catchPhrase: "something", bs: "something")))
+    UserDetailView(model: User(id: 1, name: "Ross", username: "t-rex", email: "email@.com", phone: "12345678910117", website: "dino.com", address: Address(street: "street", suite: "suite", city: "nyc", zipcode: "zipcode", geo: nil), company: Company(name: "Big Dino", catchPhrase: "something", bs: "something")))
 }
 
 extension UserDetailView {

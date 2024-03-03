@@ -8,7 +8,6 @@
 typealias Users = [User]
 
 struct User {
-    
     let id: Int
     let name, username, email, phone, website: String
     let address: Address

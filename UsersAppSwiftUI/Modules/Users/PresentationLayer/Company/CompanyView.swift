@@ -10,7 +10,6 @@ import SwiftUI
 struct CompanyView: View {
     
     @Environment(\.dismiss) var dismiss
-    
     private let company: Company
     
     init(company: Company) {

@@ -10,7 +10,6 @@ import SwiftUI
 struct AddressView: View {
     
     @Environment(\.dismiss) var dismiss
-    
     private let address: Address
     
     init(address: Address) {
