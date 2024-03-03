@@ -27,8 +27,8 @@
 		C97E06742B852FD300B08EB1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97E06732B852FD300B08EB1 /* SettingsView.swift */; };
 		C97E06762B85306700B08EB1 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97E06752B85306700B08EB1 /* SettingsViewModel.swift */; };
 		C97E06782B86367400B08EB1 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97E06772B86367400B08EB1 /* ForgotPasswordView.swift */; };
-		C97E067C2B8750F600B08EB1 /* AuthorizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97E067B2B8750F600B08EB1 /* AuthorizationView.swift */; };
-		C97E067E2B87514100B08EB1 /* AuthorizationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97E067D2B87514100B08EB1 /* AuthorizationViewModel.swift */; };
+		C97E067C2B8750F600B08EB1 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97E067B2B8750F600B08EB1 /* AuthenticationView.swift */; };
+		C97E067E2B87514100B08EB1 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97E067D2B87514100B08EB1 /* AuthenticationViewModel.swift */; };
 		C97E06822B88C33E00B08EB1 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97E06812B88C33E00B08EB1 /* ForgotPasswordViewModel.swift */; };
 		C9903B382B8504D10003CEA2 /* UsersAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9903B372B8504D10003CEA2 /* UsersAuthentication.swift */; };
 		C9A7AC3A2B24E728007AAA48 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A7AC392B24E728007AAA48 /* Address.swift */; };
@@ -132,8 +132,8 @@
 		C97E06732B852FD300B08EB1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		C97E06752B85306700B08EB1 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		C97E06772B86367400B08EB1 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordView.swift; sourceTree = "<group>"; };
-		C97E067B2B8750F600B08EB1 /* AuthorizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationView.swift; sourceTree = "<group>"; };
-		C97E067D2B87514100B08EB1 /* AuthorizationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewModel.swift; sourceTree = "<group>"; };
+		C97E067B2B8750F600B08EB1 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
+		C97E067D2B87514100B08EB1 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		C97E06812B88C33E00B08EB1 /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
 		C9903B372B8504D10003CEA2 /* UsersAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersAuthentication.swift; sourceTree = "<group>"; };
 		C9A7AC392B24E728007AAA48 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
@@ -364,14 +364,14 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		C9D24D632B938FC600128BEF /* Authorization */ = {
+		C9D24D632B938FC600128BEF /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
 				C9D24D652B93901000128BEF /* Presentation Layer */,
 				C9D24D682B93916000128BEF /* Domain Layer */,
 				C9D24D6C2B9391AD00128BEF /* Data Layer  */,
 			);
-			path = Authorization;
+			path = Authentication;
 			sourceTree = "<group>";
 		};
 		C9D24D642B938FF300128BEF /* Users */ = {
@@ -443,7 +443,7 @@
 				C9D24D732B9495A600128BEF /* App */,
 				C9D24D792B9499F100128BEF /* Main */,
 				C9D24D642B938FF300128BEF /* Users */,
-				C9D24D632B938FC600128BEF /* Authorization */,
+				C9D24D632B938FC600128BEF /* Authentication */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -564,8 +564,8 @@
 		C9D24D802B94A19F00128BEF /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				C97E067B2B8750F600B08EB1 /* AuthorizationView.swift */,
-				C97E067D2B87514100B08EB1 /* AuthorizationViewModel.swift */,
+				C97E067B2B8750F600B08EB1 /* AuthenticationView.swift */,
+				C97E067D2B87514100B08EB1 /* AuthenticationViewModel.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -844,7 +844,7 @@
 				C961967B2B2639E7001C6053 /* GradientViewBackground.swift in Sources */,
 				C97E066E2B850BB900B08EB1 /* AuthUserResult.swift in Sources */,
 				C908AC2E2B2F66BF00894733 /* UsersModel.swift in Sources */,
-				C97E067E2B87514100B08EB1 /* AuthorizationViewModel.swift in Sources */,
+				C97E067E2B87514100B08EB1 /* AuthenticationViewModel.swift in Sources */,
 				C9EBE66C2B84D04B00BAC8A8 /* MainViewModel.swift in Sources */,
 				C97E06762B85306700B08EB1 /* SettingsViewModel.swift in Sources */,
 				C97E06722B8514CA00B08EB1 /* AuthenticationRepository.swift in Sources */,
@@ -871,7 +871,7 @@
 				C96196812B2639FB001C6053 /* AddressView.swift in Sources */,
 				C97E06702B850FAA00B08EB1 /* AuthenticationUseCase.swift in Sources */,
 				C9A7AC3E2B24E757007AAA48 /* Company.swift in Sources */,
-				C97E067C2B8750F600B08EB1 /* AuthorizationView.swift in Sources */,
+				C97E067C2B8750F600B08EB1 /* AuthenticationView.swift in Sources */,
 				C9A7AC3C2B24E742007AAA48 /* Geo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

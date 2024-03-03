@@ -25,7 +25,7 @@ struct GreetingAuthView: View {
                 .font(.largeTitle)
                 .fontWeight(.heavy)
             NavigationLink {
-                AuthorizationView(state: .loginScreen,
+                AuthenticationView(state: .loginScreen,
                                   setLoggedState: { changeAppState?() })
             } label: {
                 Text("Sign in")
@@ -37,7 +37,7 @@ struct GreetingAuthView: View {
                     .cornerRadius(10)
             }
             NavigationLink {
-                AuthorizationView(state: .registerScreen,
+                AuthenticationView(state: .registerScreen,
                                   setLoggedState: { changeAppState?() })
             } label: {
                 Text("Sign up")
