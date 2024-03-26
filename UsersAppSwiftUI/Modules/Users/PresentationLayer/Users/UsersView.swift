@@ -33,26 +33,31 @@ struct UsersView: View {
 
 extension UsersView {
     func makeListView(users: Users) -> some View {
-        VStack {
-            settingsView
-            NavigationStack {
-                List {
-                    ForEach(users, id: \.id) { user in
-                        NavigationLink {
-                            UserDetailView(model: user)
-                        } label: {
-                            HStack {
-                                Image(systemName: "person.fill")
-                                Text("\(user.name)")
-                            }
-                        }
-                        .padding(30)
-                        .modifier(GradientViewBackground())
+        List {
+            ForEach(users, id: \.id) { user in
+                NavigationLink {
+                    UserDetailView(model: user)
+                } label: {
+                    HStack {
+                        Image(systemName: "person.fill")
+                        Text("\(user.name)")
                     }
                 }
-                .padding(5)
-                .listStyle(.plain)
-                .navigationTitle("Users")
+                .padding(30)
+                .modifier(GradientViewBackground())
+            }
+        }
+        .padding(5)
+        .listStyle(.plain)
+        .navigationTitle("Users")
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                NavigationLink {
+                    SettingsView(logoutAction: logoutAction)
+                } label : {
+                    Image(systemName: "gear")
+                        .font(.headline)
+                }
             }
         }
     }
@@ -92,24 +97,5 @@ extension UsersView {
             .padding(.all)
             .shadow(radius: 15)
         }
-    }
-    
-    private var settingsView: some View {
-        NavigationLink {
-            SettingsView(logoutAction: logoutAction)
-        } label: {
-            Text("Settings")
-                .font(.title)
-                .fontWeight(.semibold)
-                .foregroundStyle(.gray)
-                .padding()
-                .minimumScaleFactor(0.3)
-                .lineLimit(1)
-        }
-        .frame(maxWidth: .infinity)
-        .modifier(GradientViewBackground())
-        .cornerRadius(10)
-        .padding(.all)
-        .shadow(radius: 15)
     }
 }

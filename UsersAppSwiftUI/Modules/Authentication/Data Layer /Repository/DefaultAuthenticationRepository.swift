@@ -1,5 +1,5 @@
 //
-//  AuthenticationRepository.swift
+//  DefaultAuthenticationRepository.swift
 //  UsersAppSwiftUI
 //
 //  Created by Ewelina on 20/02/2024.
@@ -7,7 +7,7 @@
 
 import FirebaseAuth
 
-final class AuthenticationRepository: UsersAuthentication {
+final class DefaultAuthenticationRepository: AuthenticationRepository {
     
     func getCurrenUser() throws -> AuthUserResult {
         guard let user = Auth.auth().currentUser else { throw URLError(.badServerResponse) }

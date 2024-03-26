@@ -1,5 +1,5 @@
 //
-//  AuthenticationUseCase.swift
+//  DefaultAuthenticationUseCase.swift
 //  UsersAppSwiftUI
 //
 //  Created by Ewelina on 20/02/2024.
@@ -19,9 +19,9 @@ protocol AuthenticationUseCase {
 
 final class DefaultAuthenticationUseCase: AuthenticationUseCase {
     
-    let authRepository: UsersAuthentication
+    let authRepository: AuthenticationRepository
     
-    init(authRepository: UsersAuthentication = AuthenticationRepository()) {
+    init(authRepository: AuthenticationRepository = DefaultAuthenticationRepository()) {
         self.authRepository = authRepository
     }
     
