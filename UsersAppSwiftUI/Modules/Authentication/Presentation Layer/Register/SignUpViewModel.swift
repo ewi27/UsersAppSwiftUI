@@ -11,13 +11,18 @@ final class SignUpViewModel: ObservableObject {
     
     @Published var email = ""
     @Published var password = ""
-    private let useCase: AuthenticationUseCase
+    private let authenticationUseCase: AuthenticationUseCase
+    private let createUserUseCase: UserProfileUseCase
     
-    init(useCase: AuthenticationUseCase = DefaultAuthenticationUseCase()) {
-        self.useCase = useCase
+    init(authenticationUseCase: AuthenticationUseCase = DefaultAuthenticationUseCase(),
+         createUserUseCase: UserProfileUseCase = DefaultUserProfileUseCase()) {
+        self.authenticationUseCase = authenticationUseCase
+        self.createUserUseCase = createUserUseCase
     }
     
     func signUp() async throws {
-        try await useCase.signUp(email: email, password: password)
+        let result = try await authenticationUseCase.signUp(email: email, password: password)
+        let user = UserProfile(userId: result.id, email: result.email, dateCreated: Date())
+        try await createUserUseCase.saveUserProfileToDatabase(user: user)
     }
 }
